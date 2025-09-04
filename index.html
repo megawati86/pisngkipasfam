@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gorengan Khas Makassar</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+        .gradient-bg {
+            background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
+        }
+        .card-hover {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        .price-strike {
+            position: relative;
+        }
+        .price-strike::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            width: 100%;
+            height: 2px;
+            background: #ef4444;
+            transform: rotate(-5deg);
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="gradient-bg text-white py-8">
+        <div class="container mx-auto px-4 text-center">
+            <h1 class="text-4xl md:text-6xl font-bold mb-4"><img src="asset/pisang goreng.jpeg" alt=""> Gorengan Khas Makassar</h1>
+            <p class="text-xl md:text-2xl font-light">Kelezatan Tradisional dari Tanah Daeng</p>
+            <div class="mt-6 inline-block bg-red-500 text-white px-6 py-2 rounded-full font-semibold animate-pulse">
+            </div>
+        </div>
+    </header>
+
+    <!-- Menu Section -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-gray-800">Menu Pilihan</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                <!-- Pisang Goreng -->
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden card-hover border border-gray-100">
+                    <div class="h-48 bg-gradient-to-br from-yellow-400 to-orange-400 flex items-center justify-center">
+                        <span class="text-6xl"><img src="asset/pisang goreng.jpeg" alt=""></span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2 text-gray-800">Pisang Goreng</h3>
+                        <p class="text-gray-600 mb-4">Pisang matang digoreng dengan tepung renyah</p>
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <span class="text-gray-500 price-strike">Rp 25.000</span>
+                                <div class="text-2xl font-bold text-orange-600">Rp 22.500</div>
+                            </div>
+                            <button onclick="orderItem('Pisang Goreng')" class="bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded-lg font-semibold transition-colors">
+                                Pesan
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Ubi Jalar -->
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden card-hover border border-gray-100">
+                    <div class="h-48 bg-gradient-to-br from-purple-400 to-pink-400 flex items-center justify-center">
+                        <span class="text-6xl"><img src="asset/ubi jalar.jpeg" alt=""></span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2 text-gray-800">Ubi Jalar</h3>
+                        <p class="text-gray-600 mb-4">Ubi jalar manis digoreng hingga keemasan</p>
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <span class="text-gray-500 price-strike">Rp 25.000</span>
+                                <div class="text-2xl font-bold text-orange-600">Rp 22.500</div>
+                            </div>
+                            <button onclick="orderItem('Ubi Jalar')" class="bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded-lg font-semibold transition-colors">
+                                Pesan
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Ubi Goreng -->
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden card-hover border border-gray-100">
+                    <div class="h-48 bg-gradient-to-br from-amber-400 to-yellow-500 flex items-center justify-center">
+                        <span class="text-6xl"><img src="asset/ubi goreng.jpeg" alt=""></span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2 text-gray-800">Ubi Goreng</h3>
+                        <p class="text-gray-600 mb-4">Ubi kayu segar digoreng dengan bumbu khas</p>
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <span class="text-gray-500 price-strike">Rp 25.000</span>
+                                <div class="text-2xl font-bold text-orange-600">Rp 22.500</div>
+                            </div>
+                            <button onclick="orderItem('Ubi Goreng')" class="bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded-lg font-semibold transition-colors">
+                                Pesan
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sukun -->
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden card-hover border border-gray-100">
+                    <div class="h-48 bg-gradient-to-br from-green-400 to-teal-400 flex items-center justify-center">
+                        <span class="text-6xl"><img src="asset/sukun goreng.jpeg" alt=""></span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2 text-gray-800">Sukun</h3>
+                        <p class="text-gray-600 mb-4">Buah sukun goreng renyah dan gurih</p>
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <span class="text-gray-500 price-strike">Rp 25.000</span>
+                                <div class="text-2xl font-bold text-orange-600">Rp 22.500</div>
+                            </div>
+                            <button onclick="orderItem('Sukun')" class="bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded-lg font-semibold transition-colors">
+                                Pesan
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bakwang -->
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden card-hover border border-gray-100 md:col-span-2 lg:col-span-1">
+                    <div class="h-48 bg-gradient-to-br from-blue-400 to-indigo-400 flex items-center justify-center">
+                        <span class="text-6xl"><img src="asset/bakwang goreng.jpeg" alt=""></span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2 text-gray-800">Bakwang</h3>
+                        <p class="text-gray-600 mb-4">Bakwan sayur dengan bumbu tradisional</p>
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <span class="text-gray-500 price-strike">Rp 25.000</span>
+                                <div class="text-2xl font-bold text-orange-600">Rp 22.500</div>
+                            </div>
+                            <button onclick="orderItem('Bakwang')" class="bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded-lg font-semibold transition-colors">
+                                Pesan
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Payment & Delivery Info -->
+    <section class="py-16 bg-gray-100">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto">
+                <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">Informasi Pembayaran & Pengiriman</h2>
+                
+                <div class="grid md:grid-cols-2 gap-8">
+                    <!-- Payment Info -->
+                    <div class="bg-white rounded-2xl p-8 shadow-lg">
+                        <h3 class="text-2xl font-semibold mb-6 text-gray-800 flex items-center">
+                            💳 Pembayaran Transfer
+                        </h3>
+                        <div class="space-y-4">
+                            <div class="flex items-center justify-between p-4 bg-blue-50 rounded-lg">
+                                <div class="flex items-center">
+                                    <div class="w-12 h-8 bg-blue-600 rounded flex items-center justify-center text-white font-bold text-sm">BRI</div>
+                                    <span class="ml-3 font-mono text-lg">4748787</span>
+                                </div>
+                                <button onclick="copyToClipboard('4748787')" class="text-blue-600 hover:text-blue-800 text-sm font-semibold">Salin</button>
+                            </div>
+                            <div class="flex items-center justify-between p-4 bg-orange-50 rounded-lg">
+                                <div class="flex items-center">
+                                    <div class="w-12 h-8 bg-orange-600 rounded flex items-center justify-center text-white font-bold text-sm">BNI</div>
+                                    <span class="ml-3 font-mono text-lg">729787</span>
+                                </div>
+                                <button onclick="copyToClipboard('729787')" class="text-orange-600 hover:text-orange-800 text-sm font-semibold">Salin</button>
+                            </div>
+                            <div class="flex items-center justify-between p-4 bg-red-50 rounded-lg">
+                                <div class="flex items-center">
+                                    <div class="w-12 h-8 bg-red-600 rounded flex items-center justify-center text-white font-bold text-sm">BCA</div>
+                                    <span class="ml-3 font-mono text-lg">7308934</span>
+                                </div>
+                                <button onclick="copyToClipboard('7308934')" class="text-red-600 hover:text-red-800 text-sm font-semibold">Salin</button>
+                            </div>
+                        </div>
+                        <div class="mt-6 p-4 bg-green-50 rounded-lg">
+                            <p class="text-green-800 font-semibold">✅ Dapatkan diskon 10% untuk pembayaran transfer!</p>
+                        </div>
+                    </div>
+
+                    <!-- Delivery Info -->
+                    <div class="bg-white rounded-2xl p-8 shadow-lg">
+                        <h3 class="text-2xl font-semibold mb-6 text-gray-800 flex items-center">
+                            🚚 Pengiriman
+                        </h3>
+                        <div class="space-y-6">
+                            <div class="text-center p-6 bg-orange-50 rounded-lg">
+                                <div class="text-3xl font-bold text-orange-600 mb-2">30 Menit</div>
+                                <p class="text-gray-700">Estimasi pengiriman setelah pembayaran</p>
+                            </div>
+                            
+                            <div>
+                                <h4 class="font-semibold mb-3 text-gray-800">Partner Pengiriman:</h4>
+                                <div class="grid grid-cols-3 gap-3">
+                                    <div class="text-center p-3 bg-green-50 rounded-lg">
+                                        <div class="text-2xl mb-1">🏍️</div>
+                                        <div class="text-sm font-semibold text-green-700">Gojek</div>
+                                    </div>
+                                    <div class="text-center p-3 bg-purple-50 rounded-lg">
+                                        <div class="text-2xl mb-1">🛵</div>
+                                        <div class="text-sm font-semibold text-purple-700">Grab</div>
+                                    </div>
+                                    <div class="text-center p-3 bg-blue-50 rounded-lg">
+                                        <div class="text-2xl mb-1">🚴</div>
+                                        <div class="text-sm font-semibold text-blue-700">Maxim</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Order Modal -->
+    <div id="orderModal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50">
+        <div class="bg-white rounded-2xl p-8 max-w-md mx-4 w-full">
+            <h3 class="text-2xl font-bold mb-4 text-gray-800">Pesan <span id="selectedItem"></span></h3>
+            
+            <!-- Quantity Section -->
+            <div class="mb-6 p-4 bg-gray-50 rounded-lg">
+                <label class="block text-sm font-semibold text-gray-700 mb-3">Jumlah Pesanan:</label>
+                <div class="flex items-center justify-center gap-4">
+                    <button onclick="decreaseQuantity()" class="w-10 h-10 bg-orange-500 hover:bg-orange-600 text-white rounded-full font-bold text-xl flex items-center justify-center transition-colors">-</button>
+                    <div class="text-center">
+                        <div id="quantity" class="text-3xl font-bold text-gray-800">1</div>
+                        <div class="text-sm text-gray-600">porsi</div>
+                    </div>
+                    <button onclick="increaseQuantity()" class="w-10 h-10 bg-orange-500 hover:bg-orange-600 text-white rounded-full font-bold text-xl flex items-center justify-center transition-colors">+</button>
+                </div>
+                <div class="mt-4 text-center">
+                    <div class="text-sm text-gray-600">Total Harga:</div>
+                    <div id="totalPrice" class="text-2xl font-bold text-orange-600">Rp 25.000</div>
+                </div>
+            </div>
+            
+            <p class="text-gray-600 mb-6">Silakan transfer ke salah satu rekening di atas dan upload bukti transfer untuk konfirmasi pesanan.</p>
+            
+            <!-- Upload Section -->
+            <div class="mb-6">
+                <label class="block text-sm font-semibold text-gray-700 mb-3">Upload Bukti Transfer:</label>
+                <div class="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center hover:border-orange-400 transition-colors">
+                    <input type="file" id="transferProof" accept="image/*" class="hidden" onchange="handleFileUpload(event)">
+                    <div id="uploadArea" onclick="document.getElementById('transferProof').click()" class="cursor-pointer">
+                        <div class="text-4xl mb-2">📷</div>
+                        <p class="text-gray-600 mb-2">Klik untuk upload bukti transfer</p>
+                        <p class="text-sm text-gray-500">Format: JPG, PNG, atau foto</p>
+                    </div>
+                    <div id="uploadSuccess" class="hidden">
+                        <div class="text-4xl mb-2">✅</div>
+                        <p class="text-green-600 font-semibold">Bukti transfer berhasil diupload!</p>
+                        <p id="fileName" class="text-sm text-gray-600 mt-1"></p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="flex gap-3">
+                <button onclick="closeModal()" class="flex-1 bg-gray-300 hover:bg-gray-400 text-gray-800 py-3 rounded-lg font-semibold transition-colors">
+                    Tutup
+                </button>
+                <button id="confirmBtn" onclick="confirmOrder()" class="flex-1 bg-gray-400 text-white py-3 rounded-lg font-semibold cursor-not-allowed" disabled>
+                    Konfirmasi Pesanan
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Success Toast -->
+    <div id="toast" class="fixed top-4 right-4 bg-green-500 text-white px-6 py-3 rounded-lg shadow-lg transform translate-x-full transition-transform duration-300 z-50">
+        <span id="toastMessage"></span>
+    </div>
+
+    <script>
+        let currentQuantity = 1;
+        const pricePerItem = 25000;
+
+        function orderItem(itemName) {
+            document.getElementById('selectedItem').textContent = itemName;
+            document.getElementById('orderModal').classList.remove('hidden');
+            document.getElementById('orderModal').classList.add('flex');
+            resetQuantity();
+        }
+
+        function increaseQuantity() {
+            if (currentQuantity < 99) {
+                currentQuantity++;
+                updateQuantityDisplay();
+            }
+        }
+
+        function decreaseQuantity() {
+            if (currentQuantity > 1) {
+                currentQuantity--;
+                updateQuantityDisplay();
+            }
+        }
+
+        function updateQuantityDisplay() {
+            document.getElementById('quantity').textContent = currentQuantity;
+            const totalPrice = currentQuantity * pricePerItem;
+            document.getElementById('totalPrice').textContent = 'Rp ' + totalPrice.toLocaleString('id-ID');
+        }
+
+        function resetQuantity() {
+            currentQuantity = 1;
+            updateQuantityDisplay();
+        }
+
+        function closeModal() {
+            document.getElementById('orderModal').classList.add('hidden');
+            document.getElementById('orderModal').classList.remove('flex');
+            resetUpload();
+        }
+
+        function confirmOrder() {
+            const itemName = document.getElementById('selectedItem').textContent;
+            const totalPrice = currentQuantity * pricePerItem;
+            showToast(`Pesanan ${currentQuantity} porsi ${itemName} (Rp ${totalPrice.toLocaleString('id-ID')}) berhasil dikonfirmasi!`);
+            closeModal();
+            resetUpload();
+        }
+
+        function handleFileUpload(event) {
+            const file = event.target.files[0];
+            if (file) {
+                // Show success state
+                document.getElementById('uploadArea').classList.add('hidden');
+                document.getElementById('uploadSuccess').classList.remove('hidden');
+                document.getElementById('fileName').textContent = file.name;
+                
+                // Enable confirm button
+                const confirmBtn = document.getElementById('confirmBtn');
+                confirmBtn.disabled = false;
+                confirmBtn.classList.remove('bg-gray-400', 'cursor-not-allowed');
+                confirmBtn.classList.add('bg-orange-500', 'hover:bg-orange-600');
+                
+                showToast('Bukti transfer berhasil diupload!');
+            }
+        }
+
+        function resetUpload() {
+            // Reset upload area
+            document.getElementById('uploadArea').classList.remove('hidden');
+            document.getElementById('uploadSuccess').classList.add('hidden');
+            document.getElementById('transferProof').value = '';
+            
+            // Disable confirm button
+            const confirmBtn = document.getElementById('confirmBtn');
+            confirmBtn.disabled = true;
+            confirmBtn.classList.add('bg-gray-400', 'cursor-not-allowed');
+            confirmBtn.classList.remove('bg-orange-500', 'hover:bg-orange-600');
+        }
+
+        function copyToClipboard(text) {
+            navigator.clipboard.writeText(text).then(function() {
+                showToast(`Nomor rekening ${text} berhasil disalin!`);
+            });
+        }
+
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            const toastMessage = document.getElementById('toastMessage');
+            toastMessage.textContent = message;
+            toast.classList.remove('translate-x-full');
+            
+            setTimeout(() => {
+                toast.classList.add('translate-x-full');
+            }, 3000);
+        }
+
+        // Close modal when clicking outside
+        document.getElementById('orderModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeModal();
+            }
+        });
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'978c9ecdb6f22a90',t:'MTc1NjgxMjA0OS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
+
+    
+</body>
+</html>

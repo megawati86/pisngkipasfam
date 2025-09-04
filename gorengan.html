@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>pisang kipas fam</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .strikethrough {
+            text-decoration: line-through;
+            color: #9CA3AF;
+        }
+        .discount-badge {
+            background: linear-gradient(45deg, #EF4444, #DC2626);
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        .hero-bg {
+            background: linear-gradient(135deg, #FCD34D 0%, #F59E0B 50%, #D97706 100%);
+        }
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="hero-bg text-white py-16 relative">
+        <div class="container mx-auto px-4 text-center">
+            <h1 class="text-5xl font-bold mb-4">🍌PISANG KIPAS FAM🍗</h1>
+            <p class="text-xl mb-8">Cita Rasa Autentik Makassar - Gorengan Terenak di Kota! disertai pilihan sambal cobek & terasi favorit anda </p>
+            <div class="discount-badge inline-block px-6 py-3 rounded-full text-white font-bold text-lg">
+                🔥 DISKON 10% SEMUA MENU! 🔥
+            </div>
+        </div>
+        
+        <!-- Floating Cart Counter -->
+        <div id="cart-counter" class="fixed top-4 right-4 z-50 hidden">
+            <div class="bg-red-500 text-white rounded-full px-4 py-2 shadow-lg flex items-center space-x-2 cursor-pointer hover:bg-red-600 transition-colors" onclick="scrollToCart()">
+                <span class="text-2xl">🛒</span>
+                <span id="cart-count" class="font-bold">0</span>
+                <span class="text-sm">item</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Menu Sections -->
+    <div class="container mx-auto px-4 py-12">
+        
+        <!-- Gorengan Menu -->
+        <section class="mb-16">
+            <h2 class="text-3xl font-bold text-center mb-8 text-gray-800">🍌 Menu Gorengan Spesial</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="menu-item bg-white rounded-lg shadow-lg p-6 card-hover" data-name="Pisang Kipas" data-price="25000">
+                    <div class="mb-4 flex justify-center">
+                       <img src="asset/pisang kipas.jpeg" alt="">
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Pisang Kipas</h3>
+                    <div class="price-section mb-4">
+                        <span class="strikethrough text-lg">Rp 25.000</span>
+                        <span class="text-2xl font-bold text-green-600 ml-2">Rp 22.500</span>
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <div class="quantity-controls flex items-center">
+                            <button class="decrease bg-red-500 text-white px-3 py-1 rounded-l" onclick="changeQuantity(this, -1)">-</button>
+                            <span class="quantity bg-gray-100 px-4 py-1 border-t border-b">0</span>
+                            <button class="increase bg-green-500 text-white px-3 py-1 rounded-r" onclick="changeQuantity(this, 1)">+</button>
+                        </div>
+                        <button class="add-to-cart bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600" onclick="addToCart(this)">Tambah</button>
+                    </div>
+                </div>
+
+                <div class="menu-item bg-white rounded-lg shadow-lg p-6 card-hover" data-name="Ubi Goreng" data-price="25000">
+                    <div class="mb-4 flex justify-center">
+                        <img src="asset/ubi goreng.jpeg" alt="">
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Ubi Goreng</h3>
+                    <div class="price-section mb-4">
+                        <span class="strikethrough text-lg">Rp 25.000</span>
+                        <span class="text-2xl font-bold text-green-600 ml-2">Rp 22.500</span>
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <div class="quantity-controls flex items-center">
+                            <button class="decrease bg-red-500 text-white px-3 py-1 rounded-l" onclick="changeQuantity(this, -1)">-</button>
+                            <span class="quantity bg-gray-100 px-4 py-1 border-t border-b">0</span>
+                            <button class="increase bg-green-500 text-white px-3 py-1 rounded-r" onclick="changeQuantity(this, 1)">+</button>
+                        </div>
+                        <button class="add-to-cart bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600" onclick="addToCart(this)">Tambah</button>
+                    </div>
+                </div>
+
+                <div class="menu-item bg-white rounded-lg shadow-lg p-6 card-hover" data-name="Pisang Goreng" data-price="25000">
+                    <div class="mb-4 flex justify-center">
+                        <img src="asset/pisang goreng.jpeg" alt="">
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Pisang Goreng</h3>
+                    <div class="price-section mb-4">
+                        <span class="strikethrough text-lg">Rp 25.000</span>
+                        <span class="text-2xl font-bold text-green-600 ml-2">Rp 22.500</span>
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <div class="quantity-controls flex items-center">
+                            <button class="decrease bg-red-500 text-white px-3 py-1 rounded-l" onclick="changeQuantity(this, -1)">-</button>
+                            <span class="quantity bg-gray-100 px-4 py-1 border-t border-b">0</span>
+                            <button class="increase bg-green-500 text-white px-3 py-1 rounded-r" onclick="changeQuantity(this, 1)">+</button>
+                        </div>
+                        <button class="add-to-cart bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600" onclick="addToCart(this)">Tambah</button>
+                    </div>
+                </div>
+
+                <div class="menu-item bg-white rounded-lg shadow-lg p-6 card-hover" data-name="Piscok" data-price="25000">
+                    <div class="mb-4 flex justify-center">
+                        <img src="asset/piscok cokelat.jpeg" alt="">
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Piscok super cokelat</h3>
+                    <div class="price-section mb-4">
+                        <span class="strikethrough text-lg">Rp 25.000</span>
+                        <span class="text-2xl font-bold text-green-600 ml-2">Rp 22.500</span>
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <div class="quantity-controls flex items-center">
+                            <button class="decrease bg-red-500 text-white px-3 py-1 rounded-l" onclick="changeQuantity(this, -1)">-</button>
+                            <span class="quantity bg-gray-100 px-4 py-1 border-t border-b">0</span>
+                            <button class="increase bg-green-500 text-white px-3 py-1 rounded-r" onclick="changeQuantity(this, 1)">+</button>
+                        </div>
+                        <button class="add-to-cart bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600" onclick="addToCart(this)">Tambah</button>
+                    </div>
+                </div>
+
+                <div class="menu-item bg-white rounded-lg shadow-lg p-6 card-hover" data-name="Sukun" data-price="25000">
+                    <div class="mb-4 flex justify-center">
+                        <img src="asset/sukun goreng.jpeg" alt="">
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Sukun</h3>
+                    <div class="price-section mb-4">
+                        <span class="strikethrough text-lg">Rp 25.000</span>
+                        <span class="text-2xl font-bold text-green-600 ml-2">Rp 22.500</span>
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <div class="quantity-controls flex items-center">
+                            <button class="decrease bg-red-500 text-white px-3 py-1 rounded-l" onclick="changeQuantity(this, -1)">-</button>
+                            <span class="quantity bg-gray-100 px-4 py-1 border-t border-b">0</span>
+                            <button class="increase bg-green-500 text-white px-3 py-1 rounded-r" onclick="changeQuantity(this, 1)">+</button>
+                        </div>
+                        <button class="add-to-cart bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600" onclick="addToCart(this)">Tambah</button>
+                    </div>
+                </div>
+
+                <div class="menu-item bg-white rounded-lg shadow-lg p-6 card-hover" data-name="Ubi Jalar" data-price="25000">
+                    <div class="mb-4 flex justify-center">
+                        <img src="asset/ubi jalar.jpeg" alt="">
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Ubi Jalar</h3>
+                    <div class="price-section mb-4">
+                        <span class="strikethrough text-lg">Rp 25.000</span>
+                        <span class="text-2xl font-bold text-green-600 ml-2">Rp 22.500</span>
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <div class="quantity-controls flex items-center">
+                            <button class="decrease bg-red-500 text-white px-3 py-1 rounded-l" onclick="changeQuantity(this, -1)">-</button>
+                            <span class="quantity bg-gray-100 px-4 py-1 border-t border-b">0</span>
+                            <button class="increase bg-green-500 text-white px-3 py-1 rounded-r" onclick="changeQuantity(this, 1)">+</button>
+                        </div>
+                        <button class="add-to-cart bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600" onclick="addToCart(this)">Tambah</button>
+                    </div>
+                </div>
+
+                <div class="menu-item bg-white rounded-lg shadow-lg p-6 card-hover" data-name="Bakwang" data-price="25000">
+                    <div class="mb-4 flex justify-center">
+                       <img src="asset/bakwang goreng.jpeg" alt="">
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Bakwang</h3>
+                    <div class="price-section mb-4">
+                        <span class="strikethrough text-lg">Rp 25.000</span>
+                        <span class="text-2xl font-bold text-green-600 ml-2">Rp 22.500</span>
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <div class="quantity-controls flex items-center">
+                            <button class="decrease bg-red-500 text-white px-3 py-1 rounded-l" onclick="changeQuantity(this, -1)">-</button>
+                            <span class="quantity bg-gray-100 px-4 py-1 border-t border-b">0</span>
+                            <button class="increase bg-green-500 text-white px-3 py-1 rounded-r" onclick="changeQuantity(this, 1)">+</button>
+                        </div>
+                        <button class="add-to-cart bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600" onclick="addToCart(this)">Tambah</button>
+                    </div>
+                </div>
+
+                <div class="menu-item bg-white rounded-lg shadow-lg p-6 card-hover" data-name="Pisang Goreng Cokelat" data-price="25000">
+                    <div class="mb-4 flex justify-center">
+                        <img src="asset/mini panjang.jpeg" alt="">
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">pisang goreng mini panjang</h3>
+                    <div class="price-section mb-4">
+                        <span class="strikethrough text-lg">Rp 25.000</span>
+                        <span class="text-2xl font-bold text-green-600 ml-2">Rp 22.500</span>
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <div class="quantity-controls flex items-center">
+                            <button class="decrease bg-red-500 text-white px-3 py-1 rounded-l" onclick="changeQuantity(this, -1)">-</button>
+                            <span class="quantity bg-gray-100 px-4 py-1 border-t border-b">0</span>
+                            <button class="increase bg-green-500 text-white px-3 py-1 rounded-r" onclick="changeQuantity(this, 1)">+</button>
+                        </div>
+                        <button class="add-to-cart bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600" onclick="addToCart(this)">Tambah</button>
+                    </div>
+                </div>
+
+                <div class="menu-item bg-white rounded-lg shadow-lg p-6 card-hover" data-name="Pisang Goreng Cokelat Susu" data-price="25000">
+                    <div class="mb-4 flex justify-center">
+                             <img src="asset/mini panjang.jpeg" alt="">
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Pisang Goreng original</h3>
+                    <div class="price-section mb-4">
+                        <span class="strikethrough text-lg">Rp 25.000</span>
+                        <span class="text-2xl font-bold text-green-600 ml-2">Rp 22.500</span>
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <div class="quantity-controls flex items-center">
+                            <button class="decrease bg-red-500 text-white px-3 py-1 rounded-l" onclick="changeQuantity(this, -1)">-</button>
+                            <span class="quantity bg-gray-100 px-4 py-1 border-t border-b">0</span>
+                            <button class="increase bg-green-500 text-white px-3 py-1 rounded-r" onclick="changeQuantity(this, 1)">+</button>
+                        </div>
+                        <button class="add-to-cart bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600" onclick="addToCart(this)">Tambah</button>
+                    </div>
+                </div>
+
+                <div class="menu-item bg-white rounded-lg shadow-lg p-6 card-hover" data-name="Pisang Goreng Keju Falem" data-price="25000">
+                    <div class="mb-4 flex justify-center">
+                        <img src="asset/pisang ggoreng keju falem.jpeg" alt="">
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Pisang Goreng Keju Falem</h3>
+                    <div class="price-section mb-4">
+                        <span class="strikethrough text-lg">Rp 25.000</span>
+                        <span class="text-2xl font-bold text-green-600 ml-2">Rp 22.500</span>
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <div class="quantity-controls flex items-center">
+                            <button class="decrease bg-red-500 text-white px-3 py-1 rounded-l" onclick="changeQuantity(this, -1)">-</button>
+                            <span class="quantity bg-gray-100 px-4 py-1 border-t border-b">0</span>
+                            <button class="increase bg-green-500 text-white px-3 py-1 rounded-r" onclick="changeQuantity(this, 1)">+</button>
+                        </div>
+                        <button class="add-to-cart bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600" onclick="addToCart(this)">Tambah</button>
+                    </div>
+                </div>
+
+                <div class="menu-item bg-white rounded-lg shadow-lg p-6 card-hover" data-name="Pisang Kipas Super Cokelat" data-price="25000">
+                    <div class="mb-4 flex justify-center">
+                        <img src="asset/pisang kipas super cokelat.jpeg" alt="">
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Pisang Kipas Super Cokelat</h3>
+                    <div class="price-section mb-4">
+                        <span class="strikethrough text-lg">Rp 30.000</span>
+                        <span class="text-2xl font-bold text-green-600 ml-2">Rp 27.000</span>
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <div class="quantity-controls flex items-center">
+                            <button class="decrease bg-red-500 text-white px-3 py-1 rounded-l" onclick="changeQuantity(this, -1)">-</button>
+                            <span class="quantity bg-gray-100 px-4 py-1 border-t border-b">0</span>
+                            <button class="increase bg-green-500 text-white px-3 py-1 rounded-r" onclick="changeQuantity(this, 1)">+</button>
+                        </div>
+                        <button class="add-to-cart bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600" onclick="addToCart(this)">Tambah</button>
+                    </div>
+                </div>
+
+                <div class="menu-item bg-white rounded-lg shadow-lg p-6 card-hover" data-name="Pisang Kipas Cokelat Keju" data-price="25000">
+                    <div class="mb-4 flex justify-center">
+                        <img src="asset/pisang kipas cokelat keju.jpeg" alt="">
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Pisang Kipas Cokelat Keju</h3>
+                    <div class="price-section mb-4">
+                        <span class="strikethrough text-lg">Rp.30.000</span>
+                        <span class="text-2xl font-bold text-green-600 ml-2">Rp 27.000</span>
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <div class="quantity-controls flex items-center">
+                            <button class="decrease bg-red-500 text-white px-3 py-1 rounded-l" onclick="changeQuantity(this, -1)">-</button>
+                            <span class="quantity bg-gray-100 px-4 py-1 border-t border-b">0</span>
+                            <button class="increase bg-green-500 text-white px-3 py-1 rounded-r" onclick="changeQuantity(this, 1)">+</button>
+                        </div>
+                        <button class="add-to-cart bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600" onclick="addToCart(this)">Tambah</button>
+                    </div>
+                </div>
+
+                <div class="menu-item bg-white rounded-lg shadow-lg p-6 card-hover" data-name="Pisang Kipas Keju Falem" data-price="25000">
+                    <div class="mb-4 flex justify-center">
+                       <img src="asset/pisang ggoreng keju falem.jpeg">
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Pisang Kipas Keju Falem</h3>
+                    <div class="price-section mb-4">
+                        <span class="strikethrough text-lg">Rp 25.000</span>
+                        <span class="text-2xl font-bold text-green-600 ml-2">Rp 22.500</span>
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <div class="quantity-controls flex items-center">
+                            <button class="decrease bg-red-500 text-white px-3 py-1 rounded-l" onclick="changeQuantity(this, -1)">-</button>
+                            <span class="quantity bg-gray-100 px-4 py-1 border-t border-b">0</span>
+                            <button class="increase bg-green-500 text-white px-3 py-1 rounded-r" onclick="changeQuantity(this, 1)">+</button>
+                        </div>
+                        <button class="add-to-cart bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600" onclick="addToCart(this)">Tambah</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Menu Ayam Rp 25.000 -->
+        <section class="mb-16">
+            <h2 class="text-3xl font-bold text-center mb-8 text-gray-800">🍗 Menu ayam goreng lalapan,geprek & ayam bakar</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="menu-item bg-white rounded-lg shadow-lg p-6 card-hover" data-name="Nasi Ayam Goreng Lalapan" data-price="25000">
+                    <div class="mb-4 flex justify-center">
+                       <img src="asset/nasi ayam goreng lalapan.jpeg" alt="">
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Nasi Ayam Goreng Lalapan</h3>
+                    <div class="price-section mb-4">
+                        <span class="strikethrough text-lg">Rp 25.000</span>
+                        <span class="text-2xl font-bold text-green-600 ml-2">Rp 22.500</span>
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <div class="quantity-controls flex items-center">
+                            <button class="decrease bg-red-500 text-white px-3 py-1 rounded-l" onclick="changeQuantity(this, -1)">-</button>
+                            <span class="quantity bg-gray-100 px-4 py-1 border-t border-b">0</span>
+                            <button class="increase bg-green-500 text-white px-3 py-1 rounded-r" onclick="changeQuantity(this, 1)">+</button>
+                        </div>
+                        <button class="add-to-cart bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600" onclick="addToCart(this)">Tambah</button>
+                    </div>
+                </div>
+
+                <div class="menu-item bg-white rounded-lg shadow-lg p-6 card-hover" data-name="Nasi Ayam Geprek" data-price="25000">
+                    <div class="mb-4 flex justify-center">
+                        <img src="asset/nasi ayam geprek.jpeg" alt="">
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Nasi Ayam Geprek</h3>
+                    <div class="price-section mb-4">
+                        <span class="strikethrough text-lg">Rp 25.000</span>
+                        <span class="text-2xl font-bold text-green-600 ml-2">Rp 22.500</span>
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <div class="quantity-controls flex items-center">
+                            <button class="decrease bg-red-500 text-white px-3 py-1 rounded-l" onclick="changeQuantity(this, -1)">-</button>
+                            <span class="quantity bg-gray-100 px-4 py-1 border-t border-b">0</span>
+                            <button class="increase bg-green-500 text-white px-3 py-1 rounded-r" onclick="changeQuantity(this, 1)">+</button>
+                        </div>
+                        <button class="add-to-cart bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600" onclick="addToCart(this)">Tambah</button>
+                    </div>
+                </div>
+
+                <div class="menu-item bg-white rounded-lg shadow-lg p-6 card-hover" data-name="Nasi Ayam Bakar" data-price="25000">
+                    <div class="mb-4 flex justify-center">
+                       <img src="asset/nasi ayam bakar.jpeg" alt="">
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Nasi Ayam Bakar</h3>
+                    <p class="text-sm text-gray-600 mb-2">1 Porsi</p>
+                    <div class="price-section mb-4">
+                        <span class="strikethrough text-lg">Rp 25.000</span>
+                        <span class="text-2xl font-bold text-green-600 ml-2">Rp 22.500</span>
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <div class="quantity-controls flex items-center">
+                            <button class="decrease bg-red-500 text-white px-3 py-1 rounded-l" onclick="changeQuantity(this, -1)">-</button>
+                            <span class="quantity bg-gray-100 px-4 py-1 border-t border-b">0</span>
+                            <button class="increase bg-green-500 text-white px-3 py-1 rounded-r" onclick="changeQuantity(this, 1)">+</button>
+                        </div>
+                        <button class="add-to-cart bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600" onclick="addToCart(this)">Tambah</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Menu Ayam Rp 15.000 -->
+        <section class="mb-16">
+            <h2 class="text-3xl font-bold text-center mb-8 text-gray-800">🍛 Menu Spesial</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="menu-item bg-white rounded-lg shadow-lg p-6 card-hover" data-name="Nasi Kuning" data-price="15000">
+                    <h3 class="text-xl font-semibold mb-2">Nasi Kuning</h3>
+                    <div class="price-section mb-4">
+                        <span class="strikethrough text-lg">Rp 15.000</span>
+                        <span class="text-2xl font-bold text-green-600 ml-2">Rp 13.500</span>
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <div class="quantity-controls flex items-center">
+                            <button class="decrease bg-red-500 text-white px-3 py-1 rounded-l" onclick="changeQuantity(this, -1)">-</button>
+                            <span class="quantity bg-gray-100 px-4 py-1 border-t border-b">0</span>
+                            <button class="increase bg-green-500 text-white px-3 py-1 rounded-r" onclick="changeQuantity(this, 1)">+</button>
+                        </div>
+                        <button class="add-to-cart bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600" onclick="addToCart(this)">Tambah</button>
+                    </div>
+                </div>
+
+                <div class="menu-item bg-white rounded-lg shadow-lg p-6 card-hover" data-name="Nasi Ayam Krispy" data-price="15000">
+                    <h3 class="text-xl font-semibold mb-2">Nasi Ayam Krispy</h3>
+                    <div class="price-section mb-4">
+                        <span class="strikethrough text-lg">Rp 15.000</span>
+                        <span class="text-2xl font-bold text-green-600 ml-2">Rp 13.500</span>
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <div class="quantity-controls flex items-center">
+                            <button class="decrease bg-red-500 text-white px-3 py-1 rounded-l" onclick="changeQuantity(this, -1)">-</button>
+                            <span class="quantity bg-gray-100 px-4 py-1 border-t border-b">0</span>
+                            <button class="increase bg-green-500 text-white px-3 py-1 rounded-r" onclick="changeQuantity(this, 1)">+</button>
+                        </div>
+                        <button class="add-to-cart bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600" onclick="addToCart(this)">Tambah</button>
+                    </div>
+                </div>
+
+                <div class="menu-item bg-white rounded-lg shadow-lg p-6 card-hover" data-name="Ayam Lalapan (Tanpa Nasi)" data-price="15000">
+                    <h3 class="text-xl font-semibold mb-2">Ayam Lalapan (Tanpa Nasi)</h3>
+                    <div class="price-section mb-4">
+                        <span class="strikethrough text-lg">Rp 15.000</span>
+                        <span class="text-2xl font-bold text-green-600 ml-2">Rp 13.500</span>
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <div class="quantity-controls flex items-center">
+                            <button class="decrease bg-red-500 text-white px-3 py-1 rounded-l" onclick="changeQuantity(this, -1)">-</button>
+                            <span class="quantity bg-gray-100 px-4 py-1 border-t border-b">0</span>
+                            <button class="increase bg-green-500 text-white px-3 py-1 rounded-r" onclick="changeQuantity(this, 1)">+</button>
+                        </div>
+                        <button class="add-to-cart bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600" onclick="addToCart(this)">Tambah</button>
+                    </div>
+                </div>
+
+                <div class="menu-item bg-white rounded-lg shadow-lg p-6 card-hover" data-name="Ayam Bakar (Tanpa Nasi)" data-price="15000">
+                    <h3 class="text-xl font-semibold mb-2">Ayam Bakar (Tanpa Nasi)</h3>
+                    <div class="price-section mb-4">
+                        <span class="strikethrough text-lg">Rp 15.000</span>
+                        <span class="text-2xl font-bold text-green-600 ml-2">Rp 13.500</span>
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <div class="quantity-controls flex items-center">
+                            <button class="decrease bg-red-500 text-white px-3 py-1 rounded-l" onclick="changeQuantity(this, -1)">-</button>
+                            <span class="quantity bg-gray-100 px-4 py-1 border-t border-b">0</span>
+                            <button class="increase bg-green-500 text-white px-3 py-1 rounded-r" onclick="changeQuantity(this, 1)">+</button>
+                        </div>
+                        <button class="add-to-cart bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600" onclick="addToCart(this)">Tambah</button>
+                    </div>
+                </div>
+
+                <div class="menu-item bg-white rounded-lg shadow-lg p-6 card-hover" data-name="Ayam Krispy 3 Item" data-price="15000">
+                    <h3 class="text-xl font-semibold mb-2">Ayam Krispy 3 Item</h3>
+                    <div class="price-section mb-4">
+                        <span class="strikethrough text-lg">Rp 15.000</span>
+                        <span class="text-2xl font-bold text-green-600 ml-2">Rp 13.500</span>
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <div class="quantity-controls flex items-center">
+                            <button class="decrease bg-red-500 text-white px-3 py-1 rounded-l" onclick="changeQuantity(this, -1)">-</button>
+                            <span class="quantity bg-gray-100 px-4 py-1 border-t border-b">0</span>
+                            <button class="increase bg-green-500 text-white px-3 py-1 rounded-r" onclick="changeQuantity(this, 1)">+</button>
+                        </div>
+                        <button class="add-to-cart bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600" onclick="addToCart(this)">Tambah</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Minuman -->
+        <section class="mb-16">
+            <h2 class="text-3xl font-bold text-center mb-8 text-gray-800">ES TELER & ANEKA JUS </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="menu-item bg-white rounded-lg shadow-lg p-6 card-hover" data-name="Sarabba Original" data-price="10000">
+                    <h3 class="text-xl font-semibold mb-2">es teler</h3>
+                    <img src="asset/es teler.jpeg" alt="">
+                    <div class="price-section mb-4">
+                        <span class="strikethrough text-lg">Rp 20.000</span>
+                        <span class="text-2xl font-bold text-green-600 ml-2">Rp 18.000</span>
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <div class="quantity-controls flex items-center">
+                            <button class="decrease bg-red-500 text-white px-3 py-1 rounded-l" onclick="changeQuantity(this, -1)">-</button>
+                            <span class="quantity bg-gray-100 px-4 py-1 border-t border-b">0</span>
+                            <button class="increase bg-green-500 text-white px-3 py-1 rounded-r" onclick="changeQuantity(this, 1)">+</button>
+                        </div>
+                        <button class="add-to-cart bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600" onclick="addToCart(this)">Tambah</button>
+                    </div>
+                </div>
+                
+                <div class="menu-item bg-white rounded-lg shadow-lg p-6 card-hover" data-name="Sarabba Susu" data-price="10000">
+                    <h3 class="text-xl font-semibold mb-2">jus buah naga</h3>
+                    <img src="asset/jus buah naga.jpeg" alt="">
+                    <div class="price-section mb-4">
+                        <span class="strikethrough text-lg">Rp 15.000</span>
+                        <span class="text-2xl font-bold text-green-600 ml-2">Rp 13.500</span>
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <div class="quantity-controls flex items-center">
+                            <button class="decrease bg-red-500 text-white px-3 py-1 rounded-l" onclick="changeQuantity(this, -1)">-</button>
+                            <span class="quantity bg-gray-100 px-4 py-1 border-t border-b">0</span>
+                            <button class="increase bg-green-500 text-white px-3 py-1 rounded-r" onclick="changeQuantity(this, 1)">+</button>
+                        </div>
+                        <button class="add-to-cart bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600" onclick="addToCart(this)">Tambah</button>
+                    </div>
+                </div>
+                
+                <div class="menu-item bg-white rounded-lg shadow-lg p-6 card-hover" data-name="Sarabba Telur" data-price="10000">
+                    <h3 class="text-xl font-semibold mb-2">jus alvocado</h3>
+                    <img src="asset/jus alvocado.jpeg" alt="">
+                    <div class="price-section mb-4">
+                        <span class="strikethrough text-lg">Rp 15.000</span>
+                        <span class="text-2xl font-bold text-green-600 ml-2">Rp 13.500</span>
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <div class="quantity-controls flex items-center">
+                            <button class="decrease bg-red-500 text-white px-3 py-1 rounded-l" onclick="changeQuantity(this, -1)">-</button>
+                            <span class="quantity bg-gray-100 px-4 py-1 border-t border-b">0</span>
+                            <button class="increase bg-green-500 text-white px-3 py-1 rounded-r" onclick="changeQuantity(this, 1)">+</button>
+                        </div>
+                        <button class="add-to-cart bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600" onclick="addToCart(this)">Tambah</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="mb-16">
+            <h2 class="text-3xl font-bold text-center mb-8 text-gray-800"> MINUMAN  TRADISIONAL SARABBA</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="menu-item bg-white rounded-lg shadow-lg p-6 card-hover" data-name="Sarabba Original" data-price="10000">
+                    <h3 class="text-xl font-semibold mb-2">Sarabba Original</h3>
+                    <img src="asset/sarabba original.jpeg" alt="">
+                    <div class="price-section mb-4">
+                        <span class="strikethrough text-lg">Rp 10.000</span>
+                        <span class="text-2xl font-bold text-green-600 ml-2">Rp 9.000</span>
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <div class="quantity-controls flex items-center">
+                            <button class="decrease bg-red-500 text-white px-3 py-1 rounded-l" onclick="changeQuantity(this, -1)">-</button>
+                            <span class="quantity bg-gray-100 px-4 py-1 border-t border-b">0</span>
+                            <button class="increase bg-green-500 text-white px-3 py-1 rounded-r" onclick="changeQuantity(this, 1)">+</button>
+                        </div>
+                        <button class="add-to-cart bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600" onclick="addToCart(this)">Tambah</button>
+                    </div>
+                </div>
+                
+                <div class="menu-item bg-white rounded-lg shadow-lg p-6 card-hover" data-name="Sarabba Susu" data-price="10000">
+                    <h3 class="text-xl font-semibold mb-2">Sarabba Susu</h3>
+                    <img src="asset/sarabba susu.jpeg" alt="">
+                    <div class="price-section mb-4">
+                        <span class="strikethrough text-lg">Rp 15.000</span>
+                        <span class="text-2xl font-bold text-green-600 ml-2">Rp 13.500</span>
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <div class="quantity-controls flex items-center">
+                            <button class="decrease bg-red-500 text-white px-3 py-1 rounded-l" onclick="changeQuantity(this, -1)">-</button>
+                            <span class="quantity bg-gray-100 px-4 py-1 border-t border-b">0</span>
+                            <button class="increase bg-green-500 text-white px-3 py-1 rounded-r" onclick="changeQuantity(this, 1)">+</button>
+                        </div>
+                        <button class="add-to-cart bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600" onclick="addToCart(this)">Tambah</button>
+                    </div>
+                </div>
+                
+                <div class="menu-item bg-white rounded-lg shadow-lg p-6 card-hover" data-name="Sarabba Telur" data-price="10000">
+                    <h3 class="text-xl font-semibold mb-2">Sarabba Telur</h3>
+                    <img src="asset/sarraba telur.jpeg" alt="">
+                    <div class="price-section mb-4">
+                        <span class="strikethrough text-lg">Rp 15.000</span>
+                        <span class="text-2xl font-bold text-green-600 ml-2">Rp 13.500</span>
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <div class="quantity-controls flex items-center">
+                            <button class="decrease bg-red-500 text-white px-3 py-1 rounded-l" onclick="changeQuantity(this, -1)">-</button>
+                            <span class="quantity bg-gray-100 px-4 py-1 border-t border-b">0</span>
+                            <button class="increase bg-green-500 text-white px-3 py-1 rounded-r" onclick="changeQuantity(this, 1)">+</button>
+                        </div>
+                        <button class="add-to-cart bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600" onclick="addToCart(this)">Tambah</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Cart Summary -->
+        <div id="cart-summary" class="bg-white rounded-lg shadow-lg p-6 mb-8 hidden">
+            <h3 class="text-2xl font-bold mb-4">🛒 Ringkasan Pesanan</h3>
+            <div id="cart-items" class="mb-4"></div>
+            
+            <!-- Special Notes Section -->
+            <div class="border-t pt-4 mb-4">
+                <h4 class="text-lg font-semibold mb-3">📝 Catatan Khusus</h4>
+                <textarea 
+                    id="special-notes" 
+                    placeholder="Contoh: Pedas sedang, tanpa bawang, extra sambal, dll..."
+                    class="w-full p-3 border border-gray-300 rounded-lg resize-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    rows="3"
+                ></textarea>
+                <p class="text-sm text-gray-500 mt-2">💡 Tulis permintaan khusus Anda di sini (opsional)</p>
+            </div>
+            
+            <div class="border-t pt-4">
+                <div class="flex justify-between text-lg mb-2">
+                    <span>Subtotal Menu:</span>
+                    <span id="subtotal-price">Rp 0</span>
+                </div>
+                <div class="flex justify-between text-lg mb-2">
+                    <span>Ongkir (Diskon 20%):</span>
+                    <span id="delivery-fee">Rp 8.000</span>
+                </div>
+                <div class="flex justify-between text-xl font-bold border-t pt-2">
+                    <span>Total Bayar:</span>
+                    <span id="total-price">Rp 0</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Order Info -->
+        <div class="bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-lg p-8 mb-8">
+            <h3 class="text-2xl font-bold mb-6 text-center">📋 Informasi Pemesanan</h3>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div>
+                    <h4 class="text-xl font-semibold mb-4">🚚 Pengiriman</h4>
+                    <div class="space-y-2">
+                        <p>• Via Grab, Gojek, Maxim</p>
+                        <p>• Diskon ongkir 20%</p>
+                        <p>• Proses minimal 20 menit setelah transfer</p>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="text-xl font-semibold mb-4">💳 Pembayaran</h4>
+                    <div class="space-y-2">
+                        <p><strong>BCA:</strong> 7328089880</p>
+                        <p><strong>A/N:</strong> Megawati</p>
+                        <p><strong>Bukti Transfer:</strong></p>
+                        <p>WhatsApp: 089520387911</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Order Button -->
+        <div class="text-center">
+            <button id="order-btn" class="bg-gradient-to-r from-green-500 to-green-600 text-white px-12 py-4 rounded-full text-xl font-bold hover:from-green-600 hover:to-green-700 transform hover:scale-105 transition-all duration-300 shadow-lg" onclick="processOrder()">
+                🛒 Pesan Sekarang via WhatsApp
+            </button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8 mt-16">
+        <div class="container mx-auto px-4 text-center">
+            <h3 class="text-2xl font-bold mb-4">pisang kipas fam</h3>
+            <p class="mb-4">Cita Rasa Autentik Makassar - Gorengan Terenak di Kota!</p>
+            <p class="text-gray-400">WhatsApp: 089520387911</p>
+        </div>
+    </footer>
+
+    <script>
+        let cart = [];
+
+        function changeQuantity(button, change) {
+            const quantitySpan = button.parentElement.querySelector('.quantity');
+            let quantity = parseInt(quantitySpan.textContent);
+            quantity = Math.max(0, quantity + change);
+            quantitySpan.textContent = quantity;
+        }
+
+        function addToCart(button) {
+            const menuItem = button.closest('.menu-item');
+            const name = menuItem.dataset.name;
+            const price = parseInt(menuItem.dataset.price);
+            const quantity = parseInt(menuItem.querySelector('.quantity').textContent);
+            
+            if (quantity === 0) {
+                alert('Pilih jumlah item terlebih dahulu!');
+                return;
+            }
+
+            // Calculate discounted price (10% off)
+            const discountedPrice = Math.round(price * 0.9);
+            
+            // Check if item already exists in cart
+            const existingItem = cart.find(item => item.name === name);
+            if (existingItem) {
+                existingItem.quantity += quantity;
+            } else {
+                cart.push({
+                    name: name,
+                    price: discountedPrice,
+                    quantity: quantity
+                });
+            }
+
+            // Reset quantity display
+            menuItem.querySelector('.quantity').textContent = '0';
+            
+            updateCartDisplay();
+            
+            // Show success message
+            button.textContent = 'Ditambahkan!';
+            button.classList.add('bg-green-500');
+            setTimeout(() => {
+                button.textContent = 'Tambah';
+                button.classList.remove('bg-green-500');
+            }, 1000);
+        }
+
+        function updateCartDisplay() {
+            const cartSummary = document.getElementById('cart-summary');
+            const cartItems = document.getElementById('cart-items');
+            const totalPrice = document.getElementById('total-price');
+            const cartCounter = document.getElementById('cart-counter');
+            const cartCount = document.getElementById('cart-count');
+
+            // Update cart counter
+            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+            cartCount.textContent = totalItems;
+            
+            if (totalItems > 0) {
+                cartCounter.classList.remove('hidden');
+            } else {
+                cartCounter.classList.add('hidden');
+            }
+
+            if (cart.length === 0) {
+                cartSummary.classList.add('hidden');
+                return;
+            }
+
+            cartSummary.classList.remove('hidden');
+            
+            let itemsHTML = '';
+            let total = 0;
+
+            cart.forEach((item, index) => {
+                const itemTotal = item.price * item.quantity;
+                total += itemTotal;
+                
+                itemsHTML += `
+                    <div class="flex justify-between items-center py-2 border-b">
+                        <div>
+                            <span class="font-semibold">${item.name}</span>
+                            <span class="text-gray-600 ml-2">(${item.quantity}x)</span>
+                        </div>
+                        <div class="flex items-center">
+                            <span class="mr-4">Rp ${itemTotal.toLocaleString()}</span>
+                            <button onclick="removeFromCart(${index})" class="bg-red-500 text-white px-2 py-1 rounded text-sm hover:bg-red-600">
+                                Hapus
+                            </button>
+                        </div>
+                    </div>
+                `;
+            });
+
+            cartItems.innerHTML = itemsHTML;
+            
+            // Calculate delivery fee (Rp 10,000 with 20% discount = Rp 8,000)
+            const deliveryFee = 8000;
+            const finalTotal = total + deliveryFee;
+            
+            document.getElementById('subtotal-price').textContent = `Rp ${total.toLocaleString()}`;
+            document.getElementById('delivery-fee').textContent = `Rp ${deliveryFee.toLocaleString()}`;
+            totalPrice.textContent = `Rp ${finalTotal.toLocaleString()}`;
+        }
+
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            updateCartDisplay();
+        }
+
+        function processOrder() {
+            if (cart.length === 0) {
+                alert('Keranjang masih kosong! Pilih menu terlebih dahulu.');
+                return;
+            }
+
+            let orderText = '🍌 *PESANAN KULINER GORENGAN MAKASSAR* 🍗\n\n';
+            let subtotal = 0;
+
+            cart.forEach(item => {
+                const itemTotal = item.price * item.quantity;
+                subtotal += itemTotal;
+                orderText += `• ${item.name}\n  Jumlah: ${item.quantity}x\n  Harga: Rp ${itemTotal.toLocaleString()}\n\n`;
+            });
+
+            // Add special notes if provided
+            const specialNotes = document.getElementById('special-notes').value.trim();
+            if (specialNotes) {
+                orderText += `📝 *CATATAN KHUSUS:*\n${specialNotes}\n\n`;
+            }
+
+            const deliveryFee = 8000;
+            const finalTotal = subtotal + deliveryFee;
+
+            orderText += `*RINCIAN BIAYA:*\n`;
+            orderText += `Subtotal Menu: Rp ${subtotal.toLocaleString()}\n`;
+            orderText += `Ongkir (Diskon 20%): Rp ${deliveryFee.toLocaleString()}\n`;
+            orderText += `*TOTAL BAYAR: Rp ${finalTotal.toLocaleString()}*\n\n`;
+            orderText += '📋 *DETAIL PEMBAYARAN:*\n';
+            orderText += 'BCA: 7328089880 A/N Megawati\n\n';
+            orderText += '🚚 *PENGIRIMAN:*\n';
+            orderText += 'Via Grab/Gojek/Maxim (Diskon ongkir 20%)\n';
+            orderText += 'Proses 20 menit setelah transfer\n\n';
+            orderText += 'Mohon kirim bukti transfer setelah pembayaran. Terima kasih! 🙏';
+
+            const whatsappURL = `https://wa.me/6289520387911?text=${encodeURIComponent(orderText)}`;
+            window.open(whatsappURL, '_blank');
+        }
+
+        function scrollToCart() {
+            const cartSummary = document.getElementById('cart-summary');
+            cartSummary.scrollIntoView({ behavior: 'smooth' });
+        }
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'97905e242212aedc',t:'MTc1Njg1MTM0NC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
+</body>
+</html>
